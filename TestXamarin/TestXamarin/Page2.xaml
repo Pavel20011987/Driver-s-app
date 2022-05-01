@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TestXamarin.Page2"
+             Title="Главное окно"
+             NavigationPage.HasBackButton="False">
+    <ContentPage.Content>
+        <RelativeLayout>
+            <StackLayout>
+
+                <Picker x:Name="numberPicker" VerticalOptions="Center" Margin="50,100,50,0" FontSize="18" Title="Выберите Гос. номер автомобиля" SelectedIndexChanged ="numberPicker_SelectedIndexChanged"/>
+                <Button x:Name="dayButton" Text="Начать день" VerticalOptions="Center" Margin="50,50,50,0" FontSize="14" Clicked="ButtonDay_Clicked" IsEnabled="False"/>
+                <Button x:Name="dinnerButton" Text="Начать обед" VerticalOptions="Center" Margin="50,0,50,0" FontSize="14" Clicked="ButtonDinner_Clicked" IsEnabled="False"/>
+                <Entry x:Name="runStartEntry" VerticalOptions="Center" Margin="50,50,50,0" FontSize="18" Placeholder="Пробег на начало дня" Keyboard="Numeric" IsEnabled="False"/>
+                <Entry x:Name="runEndEntry" VerticalOptions="Center" Margin="50,0,50,0" FontSize="18" Placeholder="Пробег на конец дня" Keyboard="Numeric" IsEnabled="False"/>
+                <Button x:Name="sendbutton" Text="Отправить данные" VerticalOptions="Center" Margin="50,50,50,0" FontSize="20" Clicked="ButtonSend_Clicked" IsEnabled="False"/>
+                
+            </StackLayout>
+            <Frame x:Name="popupLayout" 
+                   RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5, Constant=-120}"
+                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-80}"
+                   HasShadow="True"
+                   CornerRadius="50"
+                   IsVisible="False"
+                   Scale="0">
+                <Label Text="Нажмите еще раз для выхода"/>
+            </Frame>
+
+            <Frame x:Name="activityFrame" BackgroundColor="LightGray" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
+                   RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                   Opacity="0.7"
+                   IsVisible="False"
+                   >
+                <ActivityIndicator IsRunning="True" HorizontalOptions="Center" Color="DodgerBlue"/>
+            </Frame>
+        </RelativeLayout>
+    </ContentPage.Content>
+</ContentPage>
